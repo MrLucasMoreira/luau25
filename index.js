@@ -128,6 +128,15 @@ app.post('/verificar-pagamento', async (req, res) => {
     const urlVerificacao = `https://api.infinitepay.io/invoices/public/checkout/payment_check/${handle}`;
 
     try {
+        console.log("--- INICIANDO VERIFICAÇÃO ---");
+        console.log("Handle:", handle);
+        console.log("URL de Verificação:", urlVerificacao);
+        console.log("DADOS ENVIADOS NO CORPO (PAYLOAD):", {
+            transaction_nsu: transaction_id,
+            external_order_nsu: order_nsu,
+            slug: slug
+        });
+
         console.log(`Verificando pagamento: ${transaction_id}`);
         const response = await axios.post(urlVerificacao, {
             transaction_nsu: transaction_id, // Conforme a doc, transaction_id é o mesmo que transaction_nsu
