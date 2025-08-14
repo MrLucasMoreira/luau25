@@ -6,6 +6,7 @@ const nodemailer = require("nodemailer");
 const qrcode = require("qrcode");
 const fs = require("fs");
 const path = require("path");
+const axios = require('axios');
 
 const app = express();
 const port = process.env.PORT || 10000;
@@ -114,6 +115,37 @@ async function enviarEmailComQRCode(destinatario, cpf, nome) {
         }
     }
 }
+
+app.post('/verificar-pagamento', async (req, res) => {
+    // Pega os parâmetros que a checkpag.html vai enviar
+    const { transaction_id, order_nsu, slug } = req.body;
+    const handle = 'lucasferreira07'; // Seu handle da InfinitePay
+
+    if (!transaction_id || !slug) {
+        return res.status(400).json({ success: false, message: 'Dados de transação ausentes.' });
+    }
+
+    const urlVerificacao = `https://api.infinitepay.io/invoices/public/checkout/payment_check/${handle}`;
+
+    try {
+        console.log(`Verificando pagamento: ${transaction_id}`);
+        const response = await axios.post(urlVerificacao, {
+            transaction_nsu: transaction_id, // Conforme a doc, transaction_id é o mesmo que transaction_nsu
+            external_order_nsu: order_nsu,
+            slug: slug
+        });
+
+        const dadosPagamento = response.data;
+        console.log("Resposta da API InfinitePay:", dadosPagamento); // { success: true, paid: true }
+
+        // Retorna a resposta da InfinitePay para a página checkpag.html
+        res.status(200).json(dadosPagamento);
+
+    } catch (error) {
+        console.error("Erro ao verificar pagamento na InfinitePay:", error.response ? error.response.data : error.message);
+        res.status(500).json({ success: false, paid: false, message: 'Erro ao comunicar com a API de pagamento.' });
+    }
+});
 
 
 app.listen(port, () => {
