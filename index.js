@@ -68,32 +68,56 @@ async function enviarEmailComQRCode(destinatario, cpf, nome) {
             to: destinatario,
             subject: "✅ Inscrição Confirmada! Seu ingresso para o Luau está aqui!",
             // Template HTML personalizado com o nome do participante
-            html: `
-                <div style="font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4;">
-                    <div style="max-width: 600px; background-color: #ffffff; padding: 30px; margin: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                        <h2 style="color: #0d6efd;">Olá, ${nome}!</h2>
-                        <p style="font-size: 18px; color: #333;">
-                            É com muita alegria que confirmamos sua inscrição para o <strong>Luau Jovens em Canção</strong>! 🎉
-                        </p>
-                        <p style="font-size: 16px; color: #555;">
-                            Sua decolagem nesta missão de fé e música está garantida!
-                        </p>
-                        <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
-                        <p style="font-size: 16px; color: #333;">
-                            Este é o seu <strong>Ingresso Digital</strong>. Apresente este QR Code na entrada do evento:
-                        </p>
-                        <div style="margin: 25px 0;">
-                            <img src="cid:qrcode-ingresso" alt="QR Code de Inscrição" style="max-width: 200px; border-radius: 8px;">
+            html:`
+                <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0c0a1f; color: #f0f0f0; padding: 20px; background-image: url('https://i.imgur.com/r3y5nF5.jpg'); background-size: cover; background-position: center;">
+                    <div style="max-width: 600px; margin: auto; background-color: rgba(29, 26, 57, 0.9); border: 1px solid #9f5dff; border-radius: 15px; overflow: hidden; box-shadow: 0 0 25px rgba(159, 93, 255, 0.5);">
+                        
+                        <div style="padding: 30px; text-align: center;">
+                            <img src="logoSDB.png" alt="Logo da Missão" style="width: 100px; margin-bottom: 20px;">
+                            
+                            <h1 style="font-size: 28px; color: #ffffff; margin: 0;">EMBARQUE AUTORIZADO</h1>
+                            <p style="font-size: 18px; color: #9f5dff; font-weight: bold; margin-top: 5px;">DESTINO: SAMARIA</p>
+                            
+                            <hr style="border: none; border-top: 1px solid #9f5dff; margin: 25px 0;">
+                            
+                            <p style="font-size: 16px; text-align: left; line-height: 1.6;">
+                                Saudações, Tripulante <strong>${nome}</strong>!
+                            </p>
+                            <p style="font-size: 16px; text-align: left; line-height: 1.6;">
+                                A Central de Comando do Luau Jovens em Canção confirma: seu lugar na nave com destino a <strong>Samaria</strong> está <strong style="color: #5dff9e; text-transform: uppercase;">GARANTIDO</strong>! Você respondeu ao chamado para uma jornada de fé, louvor e reencontro.
+                            </p>
+                            
+                            <div style="background-color: rgba(12, 10, 31, 0.8); border-radius: 10px; padding: 20px; margin: 30px 0;">
+                                <h2 style="font-size: 20px; color: #f04a8b; margin-top: 0; margin-bottom: 15px; text-transform: uppercase;">Sua Credencial de Tripulante</h2>
+                                <p style="margin: 0; font-size: 14px; color: #c0bacc;">Apresente esta credencial na plataforma de lançamento (check-in do evento). Ela é sua chave de acesso à nave.</p>
+                                <img src="cid:qrcode-ingresso" alt="QR Code de Acesso" style="max-width: 180px; margin-top: 20px; border: 5px solid #ffffff; border-radius: 10px;">
+                            </div>
+                            
+                            <p style="font-size: 16px; text-align: left; line-height: 1.6;">
+                                Guarde este e-mail como um documento de viagem interestellar. Ele contém informações vitais para a sua jornada.
+                            </p>
+                            
+                            <div style="text-align: left; border-left: 3px solid #f04a8b; padding-left: 15px; margin-top: 30px;">
+                                <h3 style="color: #ffffff; margin: 0 0 10px 0;">Coordenadas da Missão:</h3>
+                                <p style="margin: 5px 0;"><strong>Local:</strong> -20.854855867737655, -48.74487042018568 (Sítio São Jerônimo)</p>
+                                <p style="margin: 5px 0;"><strong>Data:</strong> 20 & 21 de Setembro</p>
+                                <p style="margin: 5px 0;"><strong>Horário:</strong>18H30</p>
+                            </div>
+                            
+                            <p style="font-size: 18px; color: #ffffff; font-weight: bold; margin-top: 40px;">
+                                Prepare-se para uma experiência que vai além da atmosfera e do sistema solar.
+                            </p>
+                            <p style="font-size: 16px; color: #9f5dff;">
+                                Nos vemos em breve, tripulante!
+                            </p>
                         </div>
-                        <p style="font-size: 14px; color: #777;">
-                            (Este QR Code é único e contém sua identificação)
-                        </p>
-                        <p style="font-size: 16px; color: #0d6efd; font-weight: bold; margin-top: 20px;">
-                            Nos vemos sob as estrelas! Deus te abençoe! 🙏✨
-                        </p>
+                        
+                        <div style="background-color: #0c0a1f; padding: 15px; text-align: center; font-size: 12px; color: #7a759a;">
+                            Central de Comando | Luau Jovens em Canção &copy; 2025
+                        </div>
                     </div>
                 </div>
-            `,
+                `,
             attachments: [{
                 filename: 'qrcode.png',
                 path: qrFilePath,
