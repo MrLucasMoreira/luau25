@@ -73,12 +73,10 @@ async function enviarEmailComQRCode(destinatario, cpf, nome) {
                     <head>
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <!-- META TAGS MÁGICAS PARA CONTROLAR O MODO ESCURO -->
                         <meta name="color-scheme" content="light dark">
                         <meta name="supported-color-schemes" content="light dark">
                         <title>Embarque Autorizado</title>
                         <style>
-                            /* Força as cores escuras no modo escuro do Gmail e outros clientes */
                             :root {
                                 color-scheme: light dark;
                                 supported-color-schemes: light dark;
@@ -111,8 +109,8 @@ async function enviarEmailComQRCode(destinatario, cpf, nome) {
                                 
                                 <div style="padding: 30px 40px; text-align: center;">
                                     
-                                    <h1 style="font-size: 28px; color: #ffffff; margin: 0; text-transform: uppercase; letter-spacing: 2px;" class="title">Embarque Autorizado</h1>
-                                    <p style="font-size: 18px; color: #9f5dff; font-weight: bold; margin-top: 5px; margin-bottom: 0;" class="subtitle">MISSÃO: LUAU SAMARIA</p>
+                                    <h1 style="font-size: 28px; color: #ffffff; margin: 0; text-transform: uppercase; letter-spacing: 2px;" class="title">EMBARQUE AUTORIZADO</h1>
+                                    <p style="font-size: 18px; color: #9f5dff; font-weight: bold; margin-top: 5px; margin-bottom: 0;" class="subtitle">Destino: SAMARIA</p>
                                     
                                     <hr style="border: none; border-top: 1px solid #9f5dff; margin: 25px 0;">
                                     
@@ -135,7 +133,7 @@ async function enviarEmailComQRCode(destinatario, cpf, nome) {
                                     
                                     <div style="text-align: left; border-left: 3px solid #f04a8b; padding-left: 15px; margin-top: 30px;" class="mission-coords">
                                         <h3 style="color: #ffffff; margin: 0 0 10px 0;" class="title">Coordenadas da Missão:</h3>
-                                        <p style="margin: 5px 0; color: #f0f0f0;" class="text"><strong>Planeta (Local):</strong> -20.8548..., -48.7448... (Sítio São Jerônimo)</p>
+                                        <p style="margin: 5px 0; color: #f0f0f0;" class="text"><strong>Planeta (Local):</strong> 20°51'17.5"S 48°44'41.5"W (Sítio São Jerônimo)</p>
                                         <p style="margin: 5px 0; color: #f0f0f0;" class="text"><strong>Data de Lançamento:</strong> 20 & 21 de Setembro</p>
                                         <p style="margin: 5px 0; color: #f0f0f0;" class="text"><strong>Horário de Embarque:</strong> 18H30</p>
                                     </div>
